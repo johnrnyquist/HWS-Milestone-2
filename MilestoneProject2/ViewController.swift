@@ -13,12 +13,19 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        title = "Shopping List"
+        
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItem))
         let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
-        navigationItem.leftBarButtonItems = [share, add]
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clearList))
+        let trash = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(clearList))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        navigationItem.leftBarButtonItem = add
+        navigationItem.rightBarButtonItem = share
 
+        toolbarItems = [spacer, trash]
+        navigationController?.setToolbarHidden(false, animated: false)
     }
     
     
